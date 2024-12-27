@@ -1,67 +1,85 @@
 import streamlit as st
-from flask import Flask, request
-from threading import Thread
 
-# Crear la aplicación Flask
-flask_app = Flask(__name__)
+# Tailwind CDN
+TAILWIND_CDN = '<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">'
 
-@flask_app.route('/backend', methods=['GET'])
-def backend():
-    # Obtener el nombre desde los parámetros
-    user_name = request.args.get('nombre', 'Invitado')
-    # Responder con un HTML dinámico
-    return f"""
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Bienvenido</title>
+# Función para renderizar el menú
+def render_menu():
+    st.markdown(
+        """
         <style>
-            body {{
-                font-family: Arial, sans-serif;
+            .menu-container {
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                margin: 0;
-                background-color: #f7f9fc;
-            }}
-            .container {{
-                background-color: white;
-                padding: 20px;
-                border-radius: 12px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                text-align: center;
-            }}
+                justify-content: space-around;
+                background-color: #4CAF50;
+                padding: 10px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+            }
+            .menu-item {
+                text-decoration: none;
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                padding: 10px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            .menu-item:hover {
+                background-color: #45a049;
+                color: white;
+            }
         </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Bienvenido, {user_name}!</h1>
-        </div>
-    </body>
-    </html>
-    """
+        """,
+        unsafe_allow_html=True,
+    )
 
-# Iniciar el servidor Flask en un subproceso
-def run_flask():
-    flask_app.run(host='0.0.0.0', port=5000, debug=False, use_reloader=False)
+    # Menú con botones de navegación
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("Home"):
+            st.session_state["page"] = "home"
+    with col2:
+        if st.button("About"):
+            st.session_state["page"] = "about"
+    with col3:
+        if st.button("Contact Me"):
+            st.session_state["page"] = "contact"
 
-# Iniciar el servidor Flask en segundo plano
-flask_thread = Thread(target=run_flask)
-flask_thread.daemon = True
-flask_thread.start()
+# HTML para cada página
+def render_html_page(title, content):
+    st.markdown(
+        f"""
+        {TAILWIND_CDN}
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>{title}</title>
+        </head>
+        <body class="bg-gray-100 flex items-center justify-center h-screen">
+            <div class="bg-black shadow-md rounded-lg p-8">
+                <h1 class="text-2xl font-bold text-center text-blue-500">{title}</h1>
+                <p class="text-red-700 mt-4">{content}</p>
+            </div>
+        </body>
+        </html>
+        """,
+        unsafe_allow_html=True,
+    )
 
-# Interfaz Streamlit
-st.title("Streamlit + Flask")
-st.write("Esta es la página inicial de Streamlit.")
+# Inicializar el estado de la página
+if "page" not in st.session_state:
+    st.session_state["page"] = "home"  # Página predeterminada
 
-# Entrada de nombre
-input_name = st.text_input("Introduce tu nombre:", placeholder="Escribe tu nombre aquí")
+# Renderizar el menú
+render_menu()
 
-# Botón para enviar el nombre al backend Flask
-if st.button("Enviar"):
-    if input_name:
-        flask_url = f"http://0.0.0.0:5000/backend?nombre={input_name}"
-        st.markdown(f"[Ir a la página de bienvenida en Flask]({flask_url})", unsafe_allow_html=True)
-    else:
-        st.error("Por favor, ingresa tu nombre.")
+# Mostrar la página correspondiente con HTML y Tailwind
+if st.session_state["page"] == "home":
+    render_html_page("Home", "Bienvenido a la página principal.")
+elif st.session_state["page"] == "about":
+    render_html_page("About", "Esta es la página About. Aquí puedes escribir sobre ti o tu proyecto.")
+elif st.session_state["page"] == "contact":
+    render_html_page("Contact Me", "Esta es la página Contact Me. Aquí puedes proporcionar información de contacto.")
+else:
+    render_html_page("Error", "Página no encontrada.")
