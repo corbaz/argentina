@@ -2,12 +2,14 @@ import streamlit as st
 from flask import Flask, request
 from threading import Thread
 
-# Crear la app de Flask
+# Crear la aplicación Flask
 flask_app = Flask(__name__)
 
 @flask_app.route('/backend', methods=['GET'])
 def backend():
-    user_name = request.args.get('nombre', 'Invitado')  # Usar un nombre de variable diferente
+    # Obtener el nombre desde los parámetros
+    user_name = request.args.get('nombre', 'Invitado')
+    # Responder con un HTML dinámico
     return f"""
     <!DOCTYPE html>
     <html>
@@ -40,26 +42,26 @@ def backend():
     </html>
     """
 
-# Ejecutar el servidor Flask en un subproceso
+# Iniciar el servidor Flask en un subproceso
 def run_flask():
-    flask_app.run(port=5000, debug=False, use_reloader=False)
+    flask_app.run(host='0.0.0.0', port=5000, debug=False, use_reloader=False)
 
-# Iniciar Flask en segundo plano
+# Iniciar el servidor Flask en segundo plano
 flask_thread = Thread(target=run_flask)
 flask_thread.daemon = True
 flask_thread.start()
 
-# Streamlit App
+# Interfaz Streamlit
 st.title("Streamlit + Flask")
 st.write("Esta es la página inicial de Streamlit.")
 
-# Entrada de nombre en Streamlit
-input_name = st.text_input("Introduce tu nombre:", placeholder="Escribe tu nombre aquí")  # Renombrar variable
+# Entrada de nombre
+input_name = st.text_input("Introduce tu nombre:", placeholder="Escribe tu nombre aquí")
 
-# Botón para redirigir a la página de Flask
+# Botón para enviar el nombre al backend Flask
 if st.button("Enviar"):
     if input_name:
-        flask_url = f"http://127.0.0.1:5000/backend?nombre={input_name}"  # Usar el nuevo nombre de variable
+        flask_url = f"http://0.0.0.0:5000/backend?nombre={input_name}"
         st.markdown(f"[Ir a la página de bienvenida en Flask]({flask_url})", unsafe_allow_html=True)
     else:
         st.error("Por favor, ingresa tu nombre.")
