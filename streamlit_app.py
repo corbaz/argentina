@@ -5,9 +5,9 @@
 #     "¡Empecemos a construir! Para obtener ayuda e inspiración, dirígete a [docs.streamlit.io](https://docs.streamlit.io/)."
 # )
 
-import streamlit as st
-from flask import Flask, request, render_template_string
 
+from flask import Flask, request, render_template_string
+import streamlit as st
 app = Flask(__name__)
 
 # Plantilla HTML
@@ -69,7 +69,7 @@ html_template = """
     <div class="container">
         <h1>Ingresa tu Nombre</h1>
         <form method="POST">
-            <input type="text" name="name" placeholder="Escribe tu nombre aquí">
+            <input type="text" name="name" placeholder="Escribe aqui tu nombre aquí">
             <button type="submit">Mostrar Nombre</button>
         </form>
         {% if name %}
@@ -82,6 +82,7 @@ html_template = """
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    st.title("🎈 julio.corbaz@gmail.com 📌")
     name = None
     if request.method == "POST":
         name = request.form.get("name")
