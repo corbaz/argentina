@@ -1,12 +1,19 @@
+
 import streamlit as st
+from pathlib import Path
 
-# Tailwind CDN
-TAILWIND_CDN = '<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">'
+# Ruta base de los archivos HTML
+BASE_DIR = Path(__file__).resolve().parent
 
-# Función para renderizar el menú
+# Función para leer archivos HTML
+def load_html(file_path):
+    with open(file_path, "r") as f:
+        return f.read()
+
+# Función para renderizar el menú (Layout)
 def render_menu():
     st.markdown(
-        """
+        '''
         <style>
             .menu-container {
                 display: flex;
@@ -30,11 +37,10 @@ def render_menu():
                 color: white;
             }
         </style>
-        """,
+        ''',
         unsafe_allow_html=True,
     )
 
-    # Menú con botones de navegación
     col1, col2, col3 = st.columns(3)
     with col1:
         if st.button("Home"):
@@ -46,40 +52,24 @@ def render_menu():
         if st.button("Contact Me"):
             st.session_state["page"] = "contact"
 
-# HTML para cada página
-def render_html_page(title, content):
-    st.markdown(
-        f"""
-        {TAILWIND_CDN}
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <title>{title}</title>
-        </head>
-        <body class="bg-gray-100 flex items-center justify-center h-screen">
-            <div class="bg-black shadow-md rounded-lg p-8">
-                <h1 class="text-2xl font-bold text-center text-blue-500">{title}</h1>
-                <p class="text-red-700 mt-4">{content}</p>
-            </div>
-        </body>
-        </html>
-        """,
-        unsafe_allow_html=True,
-    )
-
-# Inicializar el estado de la página
+# Inicializar la página por defecto
 if "page" not in st.session_state:
-    st.session_state["page"] = "home"  # Página predeterminada
+    st.session_state["page"] = "home"
 
-# Renderizar el menú
+# Renderizar el layout
 render_menu()
 
-# Mostrar la página correspondiente con HTML y Tailwind
+# Rutas de cada componente
 if st.session_state["page"] == "home":
-    render_html_page("Home", "Bienvenido a la página principal.")
+    html_content = load_html(BASE_DIR / "routes/home.html")
 elif st.session_state["page"] == "about":
-    render_html_page("About", "Esta es la página About. Aquí puedes escribir sobre ti o tu proyecto.")
+    html_content = load_html(BASE_DIR / "routes/about.html")
 elif st.session_state["page"] == "contact":
-    render_html_page("Contact Me", "Esta es la página Contact Me. Aquí puedes proporcionar información de contacto.")
+    html_content = load_html(BASE_DIR / "routes/contact.html")
 else:
-    render_html_page("Error", "Página no encontrada.")
+    html_content = "<h1>Error: Página no encontrada</h1>"
+
+# Renderizar el layout con el contenido de la ruta
+layout_html = load_html(BASE_DIR / "layout/layout.html")
+layout_with_content = layout_html.replace("{{ content }}", html_content)
+st.markdown(layout_with_content, unsafe_allow_html=True)
