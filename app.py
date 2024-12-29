@@ -1,13 +1,13 @@
-
 import streamlit as st
 from pathlib import Path
+import streamlit.components.v1 as components
 
 # Ruta base de los archivos HTML
 BASE_DIR = Path(__file__).resolve().parent
 
 # Función para leer archivos HTML
 def load_html(file_path):
-    with open(file_path, "r") as f:
+    with open(file_path, "r", encoding="utf-8") as f:
         return f.read()
 
 # Función para renderizar el menú (Layout)
@@ -72,4 +72,6 @@ else:
 # Renderizar el layout con el contenido de la ruta
 layout_html = load_html(BASE_DIR / "layout/layout.html")
 layout_with_content = layout_html.replace("{{ content }}", html_content)
-st.markdown(layout_with_content, unsafe_allow_html=True)
+# Usar components.html para ejecutar el layout completo con scripts
+components.html(layout_with_content, height=800, scrolling=True)
+# st.markdown(layout_with_content, unsafe_allow_html=True)
