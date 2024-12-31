@@ -1,19 +1,126 @@
-# 🎈 Blank app template
+# 🎈 Plantilla de Aplicación Streamlit
 
-A simple Streamlit app template for you to modify!
+Una plantilla sencilla y personalizable para tus proyectos con Streamlit.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://argentina.streamlit.app/)
+[![Abrir en Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://argentina.streamlit.app/)
 
-### How to run it on your own machine
+---
 
-1. Install the requirements
+## 🚀 Cómo Ejecutar Localmente
 
+### Requisitos Previos
+
+- Asegúrate de tener Python 3.7 o una versión posterior instalada.
+- Instala pip (el gestor de paquetes de Python).
+
+### Pasos
+
+1. **Clonar el Repositorio**
+   ```bash
+   git clone https://github.com/corbaz/argentina.git
+   cd argentina
    ```
-   $ pip install -r requirements.txt
+
+2. **Instalar Dependencias**
+   Instala las bibliotecas necesarias de Python:
+   ```bash
+   pip install -r requirements.txt
    ```
 
-2. Run the app
+3. **Ejecutar la Aplicación**
+   Inicia la aplicación de Streamlit:
+   ```bash
+   streamlit run app.py
+   ```
 
+4. **Acceder a la Aplicación**
+   Abre tu navegador y dirígete a:
    ```
-   $ streamlit run app.py
+   http://localhost:8501
    ```
+
+---
+
+## 🛠️ Flujo de Trabajo para Desarrollo
+
+### Verificar Bibliotecas Instaladas
+Lista todas las bibliotecas instaladas:
+```bash
+pip list
+```
+
+### Eliminar Bibliotecas No Usadas
+Para desinstalar una biblioteca (por ejemplo, Flask):
+```bash
+pip uninstall Flask
+```
+
+### Actualizar Dependencias
+Si modificas `requirements.txt`, actualiza tu entorno:
+```bash
+pip install -r requirements.txt
+```
+
+### Actualizar Todas las Bibliotecas
+Para verificar y actualizar todas las bibliotecas a sus versiones compatibles más recientes:
+1. Instala `pip-review`:
+   ```bash
+   pip install pip-review
+   ```
+2. Lista las bibliotecas desactualizadas:
+   ```bash
+   pip-review
+   ```
+3. Actualiza automáticamente todas las bibliotecas:
+   ```bash
+   pip-review --auto
+   ```
+
+---
+
+## 🌟 Características
+
+- **Diseño Modular**: Componentes fácilmente personalizables.
+- **Integración con Streamlit**: Listo para proyectos de visualización de datos o aprendizaje automático.
+- **Requisitos Ligeros**: Dependencias mínimas para facilitar el despliegue.
+
+---
+
+## 📂 Estructura del Proyecto
+
+```
+project/
+├── app.py               # Archivo principal de la aplicación
+├── requirements.txt     # Dependencias de Python
+├── README.md            # Documentación del proyecto (este archivo)
+├── layout/              # Plantillas de diseño y HTML
+│   └── layout.html      # Plantilla base de diseño
+├── pages/               # Páginas dinámicas de la aplicación
+│   ├── home.html
+│   ├── about.html
+│   └── contact.html
+```
+
+---
+
+## 🌐 Despliega tu Aplicación
+
+Despliega fácilmente tu aplicación en Streamlit Cloud:
+
+1. Sube tu código a un repositorio público en GitHub.
+2. Ve a [Streamlit Cloud](https://streamlit.io/cloud) y conecta tu repositorio.
+3. ¡Despliega y comparte el enlace de tu aplicación!
+
+---
+
+## 👨‍💻 Contribuidores
+
+- **[Tu Nombre](https://github.com/corbaz)** - Creador
+
+Siéntete libre de contribuir enviando problemas o solicitudes de extracción.
+
+---
+
+## 📜 Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
