@@ -3,84 +3,83 @@ from pathlib import Path
 import streamlit as st
 
 
-# Aplicar estilos personalizados a la sidebar
+# Estilos personalizados para la barra lateral (sidebar) y opciones.
 def style_sidebar():
     st.markdown(
         """
         <style>
         /* Estilo de la barra lateral */
         [data-testid="stSidebar"] {
-            background-color: cyan;
-            padding: 10px;
-            border-radius: 0 10px 10px 0;
-            font-family: Arial, sans-serif;
-            width: 244px;
+            background-color: #F4F6F8; /* Fondo gris claro pastel */
+            padding: 20px;
+            border-radius: 0 10px 10px 0; /* Bordes redondeados solo en el lado derecho */
+            font-family: "Segoe UI", Arial, sans-serif; /* Fuente similar a Office */
+            width: 250px; /* Ancho fijo */
         }
-        
-        /* Opciones */
+    
+        /* Opciones del menú */
         [data-testid="stMarkdownContainer"] p {
-            color: blue;           /* Cambiar el color del texto */
-            font-size: 20px;       /* Cambiar el tamaño del texto */
-            font-weight: bold;     /* Poner el texto en negrita */
-            margin: 0;             /* Quitar márgenes adicionales */
+            color: #5B9BD5; /* Azul pastel */
+            font-size: 18px; /* Tamaño moderado */
+            font-weight: bold; /* Texto en negrita */
+            margin: 0; /* Sin margen adicional */
         }
-        
-        /* Titulo Menu (cascada para que no tome css de las opciones) */
+    
+        /* Título del menú (estilo específico) */
         [data-testid="stWidgetLabel"] p {
-            color: red;             /* Cambiar el color del texto */
-            font-size: 38px;        /* Cambiar el tamaño del texto */
-            font-weight: bold;      /* Poner el texto en negrita */
-            margin: 0;              /* Quitar márgenes */
+            color: #4472C4; /* Azul oscuro pastel */
+            font-size: 24px; /* Tamaño más grande para destacar */
+            font-weight: bold; /* Texto en negrita */
+            margin: 0;
         }
-
-        /* Estilo para cada botón de radio (input[type="radio"]) */
+    
+        /* Contenedor de botones de radio */
         [role="radiogroup"] {
-            background-color: transparent; /* Fondo del grupo */
-            border-radius: 0px; /* Bordes redondeados */
-            padding: 5px;
-            border: 0px solid #ddd; /* Borde del contenedor */
-            # box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #E7E6E6; /* Gris claro pastel */
+            border-radius: 8px; /* Bordes redondeados */
+            padding: 10px;
+            border: 1px solid #D9D9D9; /* Borde tenue */
         }
-        
+    
         /* Fondo al pasar el cursor sobre una opción */
         [data-baseweb="radio"]:hover {
-            background-color: yellow;
-            border-radius: 10px;
-            width: 100%;
+            background-color: #DCE6F1; /* Azul claro pastel */
+            border-radius: 5px;
         }
-
+    
         /* Fondo para la opción seleccionada */
         [data-baseweb="radio"] > div:first-child {
-            background-color: green; /* Cambiar el fondo */
-            border: 2px solid pink; /* Cambiar el borde */
+            background-color: #9BC2E6; /* Azul pastel seleccionado */
+            border: 2px solid #5B9BD5; /* Borde azul más oscuro */
             border-radius: 50%; /* Mantener circular */
             width: 20px;
             height: 20px;
-            margin-left: 5px; /* Espaciado a la izquierda del radio button */
+            margin-left: 5px; /* Espaciado a la izquierda */
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
-        /* Estilo para la opción activa */
+    
+        /* Texto de la opción seleccionada */
         input[type="radio"]:checked + div > div > p {
-            color: #2E7D32; /* Cambiar color del texto seleccionado */
+            color: #2F5597; /* Azul intenso pastel */
+            font-weight: bold;
         }
-        
-        /* Cambiar el color de la flecha usando el atributo fill */
+    
+        /* Flecha de la barra lateral */
         [data-testid="stSidebarCollapseButton"] svg {
-            fill: yellow; /* Cambiar a amarillo */
+            fill: #4472C4; /* Azul oscuro pastel */
             transition: fill 0.3s ease; /* Transición suave */
         }
-
-        /* Cambiar el color al pasar el cursor */
+    
+        /* Cambiar el color al pasar el cursor sobre la flecha */
         [data-testid="stSidebarCollapseButton"]:hover svg {
-            fill: red; /* Cambiar a rojo al hacer hover */
+            fill: #D9D9D9; /* Gris claro */
         }
+        </style>
         """,
         unsafe_allow_html=True,
     )
-
 
 # Inicializar la página por defecto
 if "page" not in st.session_state:
