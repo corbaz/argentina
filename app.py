@@ -2,6 +2,7 @@ from pathlib import Path
 
 import streamlit as st
 
+
 # Aplicar estilos personalizados a la sidebar
 def style_sidebar():
     st.markdown(
@@ -13,6 +14,7 @@ def style_sidebar():
             padding: 10px;
             border-radius: 0 10px 10px 0;
             font-family: Arial, sans-serif;
+            width: 244px;
         }
         
         /* Opciones */
