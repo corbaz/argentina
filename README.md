@@ -2,7 +2,7 @@
 
 Una plantilla sencilla y personalizable para tus proyectos con Streamlit.
 
-[![Abrir en Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://argentina.streamlit.app/)
+[![Deployed on Streamlit](https://img.shields.io/badge/Streamlit-Deployed-brightgreen)](https://argentina.streamlit.app/)
 
 ---
 

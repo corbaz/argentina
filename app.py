@@ -39,7 +39,7 @@ def style_sidebar():
             border-radius: 0px; /* Bordes redondeados */
             padding: 5px;
             border: 0px solid #ddd; /* Borde del contenedor */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            # box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
         /* Fondo al pasar el cursor sobre una opción */
