@@ -12,6 +12,11 @@ def style_sidebar():
                 display: none; /* Oculta el elemento */
         }
         
+        /* Ocultar el botón "Manage app" */
+        [data-testid="manage-app-button"] {
+            display: none; /* Oculta completamente el elemento */
+        }
+        
         /* Estilo de la barra lateral */
         [data-testid="stSidebar"] {
             background-color: #F4F6F8; /* Fondo gris claro pastel */
