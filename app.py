@@ -8,6 +8,10 @@ def style_sidebar():
     st.markdown(
         """
         <style>
+        [data-testid="stHeader"] {
+                display: none; /* Oculta el elemento */
+        }
+        
         /* Estilo de la barra lateral */
         [data-testid="stSidebar"] {
             background-color: #F4F6F8; /* Fondo gris claro pastel */
@@ -80,6 +84,7 @@ def style_sidebar():
         """,
         unsafe_allow_html=True,
     )
+
 
 # Inicializar la página por defecto
 if "page" not in st.session_state:
