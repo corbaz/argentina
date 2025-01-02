@@ -19,10 +19,8 @@ def style_sidebar():
         </script>
         
         <style>
-        
-        /* Ocultar el botón "Manage app" */
-        [data-testid="manage-app-button"] {
-            display: none !important; /* Oculta completamente el botón */
+        ._terminalButton_rix23_138 {
+            display: none !important; /* Ocultar completamente el botón */
         }
         
         [data-testid="stHeader"] {
