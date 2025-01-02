@@ -15,11 +15,13 @@ def style_sidebar():
                 left: -9999px !important; 
                 visibility: hidden !important; 
             }
+
             [data-testid="stMainBlockContainer"] {
                 margin: 0;
                 padding: 0;
                 overflow: hidden;
             }
+
             [data-testid="stVerticalBlock"] {
                 gap: 0px; 
                 background-color: white; 
@@ -36,6 +38,7 @@ def style_sidebar():
             [data-testid="stRadio"]{
                 background-color: #5B9BD5; /* Gris claro pastel */
             }
+
             /* Opciones del menú */
             [data-testid="stMarkdownContainer"] p {
                 color: #5B9BD5; /* Azul pastel */
@@ -110,7 +113,7 @@ style_sidebar()
 
 # Menú de navegación en el sidebar
 menu = ["Alta", "Consulta", "Edicion", "Baja"]
-choice = st.sidebar.radio("Menu de Usuarios", menu)
+choice = st.sidebar.radio("Menú de Usuarios", menu)
 
 # Actualizar la página actual
 if choice.lower() != st.session_state["page"]:
