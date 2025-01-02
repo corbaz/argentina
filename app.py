@@ -7,6 +7,18 @@ import streamlit as st
 def style_sidebar():
     st.markdown(
         """
+         <script>
+        // Esperar a que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            // Buscar el botón por su atributo data-testid
+            const manageAppButton = document.querySelector('[data-testid="manage-app-button"]');
+            if (manageAppButton) {
+                manageAppButton.style.display = 'none'; // Ocultar el botón
+            }
+        });
+        </script>
+        
+        
         <style>
         [data-testid="stHeader"] {
                 display: none; /* Oculta el elemento */
