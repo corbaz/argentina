@@ -7,7 +7,8 @@ import streamlit as st
 def style_sidebar():
     st.markdown(
         """
-        <style>         
+        <style>
+            /* Estilo general de la barra lateral */         
            [data-testid="stHeader"] {
                 position: absolute !important; 
                 top: -9999px !important; 
@@ -102,14 +103,14 @@ def style_sidebar():
 
 # Inicializar la página por defecto
 if "page" not in st.session_state:
-    st.session_state["page"] = "home"
+    st.session_state["page"] = "alta"
 
 # Aplicar estilos personalizados
 style_sidebar()
 
 # Menú de navegación en el sidebar
-menu = ["Home", "About", "Contact"]
-choice = st.sidebar.radio("Menu", menu)
+menu = ["Alta", "Consulta", "Edicion", "Baja"]
+choice = st.sidebar.radio("Usuarios", menu)
 
 # Actualizar la página actual
 if choice.lower() != st.session_state["page"]:
