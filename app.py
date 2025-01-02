@@ -23,6 +23,14 @@ def style_sidebar():
             display: none !important; /* Ocultar completamente el botón */
         }
         
+        ._container_gzau3_1 {
+            display: none !important; /* Oculta completamente el elemento */
+        }
+        
+        ._profileContainer_gzau3_53 {
+            display: none !important; /* Oculta completamente el elemento */
+        }
+        
         [data-testid="stHeader"] {
                 display: none; /* Oculta el elemento */
         }
