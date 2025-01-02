@@ -8,12 +8,11 @@ def style_sidebar():
     st.markdown(
         """
          <script>
-        // Esperar a que el DOM esté completamente cargado
-        document.addEventListener('DOMContentLoaded', function() {
-            // Buscar el botón por su atributo data-testid
-            const manageAppButton = document.querySelector('[data-testid="manage-app-button"]');
-            if (manageAppButton) {
-                manageAppButton.style.display = 'none'; // Ocultar el botón
+            document.addEventListener('DOMContentLoaded', function() {
+            // Buscar el contenedor del perfil
+            const profileContainer = document.querySelector('._profileContainer_gzau3_53');
+            if (profileContainer) {
+                profileContainer.style.display = 'none'; // Ocultar el perfil
             }
         });
         </script>
