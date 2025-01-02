@@ -21,7 +21,7 @@ def style_sidebar():
                 overflow: hidden;
             }
             [data-testid="stVerticalBlock"] {
-                gap: 10px; 
+                gap: 0px; 
                 background-color: white; 
             }
             
@@ -39,7 +39,7 @@ def style_sidebar():
             /* Opciones del menú */
             [data-testid="stMarkdownContainer"] p {
                 color: #5B9BD5; /* Azul pastel */
-                font-size: 18px; /* Tamaño moderado */
+                font-size: 16px; /* Tamaño moderado */
                 font-weight: bold; /* Texto en negrita */
                 margin: 0; /* Sin margen adicional */
             }
@@ -47,7 +47,7 @@ def style_sidebar():
             /* Título del menú (estilo específico) */
             [data-testid="stWidgetLabel"] p {
                 color: #4472C4; /* Azul oscuro pastel */
-                font-size: 24px; /* Tamaño más grande para destacar */
+                font-size: 18px; /* Tamaño más grande para destacar */
                 font-weight: bold; /* Texto en negrita */
                 margin: 0;
             }
@@ -110,7 +110,7 @@ style_sidebar()
 
 # Menú de navegación en el sidebar
 menu = ["Alta", "Consulta", "Edicion", "Baja"]
-choice = st.sidebar.radio("Usuarios", menu)
+choice = st.sidebar.radio("Menu de Usuarios", menu)
 
 # Actualizar la página actual
 if choice.lower() != st.session_state["page"]:
