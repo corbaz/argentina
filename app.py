@@ -7,14 +7,28 @@ import streamlit as st
 def style_sidebar():
     st.markdown(
         """
-         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-            // Buscar el contenedor del perfil
-            const profileContainer = document.querySelector('._profileContainer_gzau3_53');
-            if (profileContainer) {
-                profileContainer.style.display = 'none'; // Ocultar el perfil
-            }
-        });
+        <script>
+            // Intentar manipular elementos fuera del iframe
+            window.addEventListener('DOMContentLoaded', function() {
+                try {
+                    // Acceder al DOM global usando window.parent
+                    const parentDocument = window.parent.document;
+    
+                    // Ocultar el contenedor del perfil
+                    const profileContainer = parentDocument.querySelector('._profileContainer_gzau3_53');
+                    if (profileContainer) {
+                        profileContainer.style.display = 'none';
+                    }
+    
+                    // Ocultar el botón "Manage app"
+                    const manageAppButton = parentDocument.querySelector('[data-testid="manage-app-button"]');
+                    if (manageAppButton) {
+                        manageAppButton.style.display = 'none';
+                    }
+                } catch (error) {
+                    console.error("No se puede acceder al DOM principal:", error);
+                }
+            });
         </script>
         
         <style>
