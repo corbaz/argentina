@@ -7,121 +7,94 @@ import streamlit as st
 def style_sidebar():
     st.markdown(
         """
-        <script>
-            // Intentar manipular elementos fuera del iframe
-            window.addEventListener('DOMContentLoaded', function() {
-                try {
-                    // Acceder al DOM global usando window.parent
-                    const parentDocument = window.parent.document;
-    
-                    // Ocultar el contenedor del perfil
-                    const profileContainer = parentDocument.querySelector('._profileContainer_gzau3_53');
-                    if (profileContainer) {
-                        profileContainer.style.display = 'none';
-                    }
-    
-                    // Ocultar el botón "Manage app"
-                    const manageAppButton = parentDocument.querySelector('[data-testid="manage-app-button"]');
-                    if (manageAppButton) {
-                        manageAppButton.style.display = 'none';
-                    }
-                } catch (error) {
-                    console.error("No se puede acceder al DOM principal:", error);
-                }
-            });
-        </script>
+        <style>         
+           [data-testid="stHeader"] {
+                position: absolute !important; 
+                top: -9999px !important; 
+                left: -9999px !important; 
+                visibility: hidden !important; 
+            }
+            [data-testid="stMainBlockContainer"] {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+            [data-testid="stVerticalBlock"] {
+                gap: 10px; 
+                background-color: white; 
+            }
+            
+            /* Estilo de la barra lateral */
+            [data-testid="stSidebar"] {
+                background-color: #5B9BD5; /* Fondo gris claro pastel */
+                padding: 20px;
+                border-radius: 0 10px 10px 0; /* Bordes redondeados solo en el lado derecho */
+                font-family: "Segoe UI", Arial, sans-serif; /* Fuente similar a Office */
+                width: 250px; /* Ancho fijo */
+            }
+            [data-testid="stRadio"]{
+                background-color: #5B9BD5; /* Gris claro pastel */
+            }
+            /* Opciones del menú */
+            [data-testid="stMarkdownContainer"] p {
+                color: #5B9BD5; /* Azul pastel */
+                font-size: 18px; /* Tamaño moderado */
+                font-weight: bold; /* Texto en negrita */
+                margin: 0; /* Sin margen adicional */
+            }
         
-        <style>
-        ._terminalButton_rix23_138 {
-            display: none !important; /* Ocultar completamente el botón */
-        }
+            /* Título del menú (estilo específico) */
+            [data-testid="stWidgetLabel"] p {
+                color: #4472C4; /* Azul oscuro pastel */
+                font-size: 24px; /* Tamaño más grande para destacar */
+                font-weight: bold; /* Texto en negrita */
+                margin: 0;
+            }
         
-        ._container_gzau3_1 {
-            display: none !important; /* Oculta completamente el elemento */
-        }
+            /* Contenedor de botones de radio */
+            [role="radiogroup"] {
+                background-color: #E7E6E6; /* Gris claro pastel */
+                border-radius: 8px; /* Bordes redondeados */
+                padding: 10px;
+                border: 1px solid #D9D9D9; /* Borde tenue */
+            }
         
-        ._profileContainer_gzau3_53 {
-            display: none !important; /* Oculta completamente el elemento */
-        }
+            /* Fondo al pasar el cursor sobre una opción */
+            [data-baseweb="radio"]:hover {
+                background-color: #DCE6F1; /* Azul claro pastel */
+                border-radius: 5px;
+            }
         
-        [data-testid="stHeader"] {
-                display: none; /* Oculta el elemento */
-        }
+            /* Fondo para la opción seleccionada */
+            [data-baseweb="radio"] > div:first-child {
+                background-color: #9BC2E6; /* Azul pastel seleccionado */
+                border: 2px solid #5B9BD5; /* Borde azul más oscuro */
+                border-radius: 50%; /* Mantener circular */
+                width: 20px;
+                height: 20px;
+                margin-left: 5px; /* Espaciado a la izquierda */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
         
-        /* Ocultar el botón "Manage app" */
-        [data-testid="manage-app-button"] {
-            display: none; /* Oculta completamente el elemento */
-        }
+            /* Texto de la opción seleccionada */
+            input[type="radio"]:checked + div > div > p {
+                color: #2F5597; /* Azul intenso pastel */
+                font-weight: bold;
+            }
         
-        /* Estilo de la barra lateral */
-        [data-testid="stSidebar"] {
-            background-color: #F4F6F8; /* Fondo gris claro pastel */
-            padding: 20px;
-            border-radius: 0 10px 10px 0; /* Bordes redondeados solo en el lado derecho */
-            font-family: "Segoe UI", Arial, sans-serif; /* Fuente similar a Office */
-            width: 250px; /* Ancho fijo */
-        }
-    
-        /* Opciones del menú */
-        [data-testid="stMarkdownContainer"] p {
-            color: #5B9BD5; /* Azul pastel */
-            font-size: 18px; /* Tamaño moderado */
-            font-weight: bold; /* Texto en negrita */
-            margin: 0; /* Sin margen adicional */
-        }
-    
-        /* Título del menú (estilo específico) */
-        [data-testid="stWidgetLabel"] p {
-            color: #4472C4; /* Azul oscuro pastel */
-            font-size: 24px; /* Tamaño más grande para destacar */
-            font-weight: bold; /* Texto en negrita */
-            margin: 0;
-        }
-    
-        /* Contenedor de botones de radio */
-        [role="radiogroup"] {
-            background-color: #E7E6E6; /* Gris claro pastel */
-            border-radius: 8px; /* Bordes redondeados */
-            padding: 10px;
-            border: 1px solid #D9D9D9; /* Borde tenue */
-        }
-    
-        /* Fondo al pasar el cursor sobre una opción */
-        [data-baseweb="radio"]:hover {
-            background-color: #DCE6F1; /* Azul claro pastel */
-            border-radius: 5px;
-        }
-    
-        /* Fondo para la opción seleccionada */
-        [data-baseweb="radio"] > div:first-child {
-            background-color: #9BC2E6; /* Azul pastel seleccionado */
-            border: 2px solid #5B9BD5; /* Borde azul más oscuro */
-            border-radius: 50%; /* Mantener circular */
-            width: 20px;
-            height: 20px;
-            margin-left: 5px; /* Espaciado a la izquierda */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    
-        /* Texto de la opción seleccionada */
-        input[type="radio"]:checked + div > div > p {
-            color: #2F5597; /* Azul intenso pastel */
-            font-weight: bold;
-        }
-    
-        /* Flecha de la barra lateral */
-        [data-testid="stSidebarCollapseButton"] svg {
-            fill: #4472C4; /* Azul oscuro pastel */
-            transition: fill 0.3s ease; /* Transición suave */
-        }
-    
-        /* Cambiar el color al pasar el cursor sobre la flecha */
-        [data-testid="stSidebarCollapseButton"]:hover svg {
-            fill: #D9D9D9; /* Gris claro */
-        }
-        </style>
+            /* Flecha de la barra lateral */
+            [data-testid="stSidebarCollapseButton"] svg {
+                fill: #4472C4; /* Azul oscuro pastel */
+                transition: fill 0.3s ease; /* Transición suave */
+            }
+        
+            /* Cambiar el color al pasar el cursor sobre la flecha */
+            [data-testid="stSidebarCollapseButton"]:hover svg {
+                fill: #D9D9D9; /* Gris claro */
+            }
+            </style>
         """,
         unsafe_allow_html=True,
     )
