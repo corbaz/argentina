@@ -18,8 +18,13 @@ def style_sidebar():
         });
         </script>
         
-        
         <style>
+        
+        /* Ocultar el botón "Manage app" */
+        [data-testid="manage-app-button"] {
+            display: none !important; /* Oculta completamente el botón */
+        }
+        
         [data-testid="stHeader"] {
                 display: none; /* Oculta el elemento */
         }
