@@ -8,6 +8,7 @@ class MainController:
     def __init__(self):
         if "page" not in st.session_state:
             st.session_state["page"] = "alta"
+        self.menu = ["Alta", "Baja", "Consulta", "Modificación"]
     
     """ Actualiza la página actual en el estado de la sesión"""
     """ La función recibe el nombre de la página a la cual se desea navegar"""
@@ -17,5 +18,9 @@ class MainController:
     """ Obtiene la página actual del estado de la sesión"""
     """ La función devuelve el nombre de la página actual"""
     def get_current_page(self):
-        """Obtiene la página actual del estado de la sesión"""
         return st.session_state.get("page", "alta")
+    
+    """ Renderiza el menú de navegación en la barra lateral"""
+    """ Retorna la opción seleccionada por el usuario"""
+    def render_navigation(self):
+        return st.sidebar.radio("Menú de Usuarios", self.menu)
