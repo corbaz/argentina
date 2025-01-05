@@ -95,10 +95,11 @@ project/
 ├── README.md            # Documentación del proyecto (este archivo)
 ├── layout/              # Plantillas de diseño y HTML
 │   └── layout.html      # Plantilla base de diseño
-├── pages/               # Páginas dinámicas de la aplicación
-│   ├── home.html
-│   ├── about.html
-│   └── contact.html
+├── routes/              # Páginas dinámicas de la aplicación con sus rutas
+│   ├── alta.html
+│   ├── consulta.html
+│   ├── modificación.html
+│   └── baja.html
 ```
 
 ---

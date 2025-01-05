@@ -42,7 +42,7 @@ def style_sidebar():
             /* Opciones del menú */
             [data-testid="stMarkdownContainer"] p {
                 color: #5B9BD5; /* Azul pastel */
-                font-size: 16px; /* Tamaño moderado */
+                font-size: 14px; /* Tamaño moderado */
                 font-weight: bold; /* Texto en negrita */
                 margin: 0; /* Sin margen adicional */
             }
@@ -112,7 +112,7 @@ if "page" not in st.session_state:
 style_sidebar()
 
 # Menú de navegación en el sidebar
-menu = ["Alta", "Consulta", "Edicion", "Baja"]
+menu = ["Alta", "Consulta", "Modificación", "Baja"]
 choice = st.sidebar.radio("Menú de Usuarios", menu)
 
 # Actualizar la página actual
